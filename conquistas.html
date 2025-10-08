@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conquistas - Rota Certa</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Press Start 2P', cursive; }
+
+body {
+  background-image: url("fundo.jpg");
+  background-color: #1a002b;
+  display:flex; justify-content:center; align-items:flex-start;
+  min-height:100vh; padding:20px;
+}
+
+.container {
+  background:#2d004d;
+  border-radius:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+  padding:20px;
+  width:100%;
+  max-width:600px;
+  text-align:center;
+  margin-top:20px;
+}
+
+.logo { width:150px; margin-bottom:10px; }
+
+h1 { color:#ff4da6; font-size:1rem; margin-bottom:10px; }
+
+.description {
+  color:#c5a3ff;
+  font-size:0.55rem;
+  margin-bottom:15px;
+}
+
+.achievements { display:flex; flex-direction:column; gap:10px; }
+
+.achievement {
+  background:#6f42c1;
+  color:#fff;
+  padding:12px;
+  border-radius:12px;
+  font-size:0.5rem;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.achievement.unlocked {
+  background:#4ade80;
+}
+
+.achievement img {
+  width:48px;
+  height:48px;
+}
+
+.btn {
+  padding:12px;
+  background:#6f42c1;
+  color:#fff;
+  border:none;
+  border-radius:12px;
+  margin-top:10px;
+  cursor:pointer;
+  font-size:0.5rem;
+  transition:0.3s;
+}
+
+.btn:hover { background:#d63384; transform:scale(1.05); }
+
+</style>
+</head>
+<body>
+<div class="container">
+  <img src="logo.png" alt="Logo" class="logo">
+  <h1>Conquistas</h1>
+  <p class="description">Aqui você acompanha suas conquistas e XP acumulado!</p>
+
+  <div class="achievements">
+    <div class="achievement unlocked">
+      <img src="trofeu.png" alt="Troféu">
+      Currículo interativo: Concluído (400 XP)
+    </div>
+    <div class="achievement unlocked">
+      <img src="trofeu.png" alt="Troféu">
+      Jogo da Memória: Concluído (400 XP)
+    </div>
+    <div class="achievement unlocked">
+      <img src="trofeu.png" alt="Troféu">
+      Entrevista do Milhão: Concluído (400 XP)
+    </div>
+    <div class="achievement">
+      Meta: 1500 XP
+    </div>
+  </div>
+
+  <button class="btn" onclick="history.back()">Voltar</button>
+</div>
+</body>
+</html>

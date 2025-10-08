@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parabéns - Rota Certa</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Press Start 2P', cursive; }
+    body {
+      background-image: url("fundo.jpg");
+      background-color: #1a002b;
+      display:flex; justify-content:center; align-items:center; min-height:100vh;
+      padding:20px;
+    }
+    .container {
+      background:#2d004d; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.4);
+      padding:30px; width:100%; max-width:500px; text-align:center;
+    }
+    h1 { color:#ff4da6; font-size:1rem; margin-bottom:20px; }
+    p { color:#c5a3ff; font-size:0.6rem; margin-bottom:20px; }
+    .btn {
+      padding:14px; background:#6f42c1; color:#fff; border:none; border-radius:14px;
+      font-size:0.9rem; cursor:pointer;
+    }
+    .btn:hover { background:#d63384; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Parabéns!</h1>
+    <p style="color: green;">Você completou o minigame e ganhou <strong>400 XP</strong>!</p>
+    <button class="btn" onclick="window.location.href='dashboard_jogo.html'">Voltar ao Início</button>
+  </div>
+</body>
+</html>

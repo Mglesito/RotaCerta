@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Rota Certa</title>
+
+  <!-- Fonte pixelada -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Press Start 2P', cursive;
+    }
+
+    body {
+      background-image: url("fundo.jpg");
+      background-color: #1a002b;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 140px;
+      margin-bottom: 20px;
+      animation: bounceIn 1s ease;
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      60% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    h1 {
+      font-size: 0.9rem;
+      color: #ff4da6;
+      margin-bottom: 30px;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .cards {
+      display: grid;
+      gap: 20px;
+      width: 100%;
+      max-width: 800px;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    .card {
+      background: #2d004d;
+      border: 2px solid #6f42c1;
+      border-radius: 16px;
+      padding: 20px;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 0.8rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+
+    .card:hover {
+      background: #6f42c1;
+      transform: translateY(-6px) scale(1.05);
+      box-shadow: 0 6px 14px rgba(214,51,132,0.6);
+    }
+
+    .card:active {
+      transform: scale(0.95);
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.55rem;
+      color: #ccc;
+    }
+
+    .footer a {
+      color: #ff4da6;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsivo */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 0.8rem;
+      }
+      .card {
+        font-size: 0.55rem;
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="logo.png" alt="Logo Rota Certa" class="logo">
+  <h1>Onde você está agora?</h1>
+
+  <div class="cards">
+    <div class="card">🎓 Estagiário</div>
+    <div class="card">👨‍🎓 Primeiro Emprego</div>
+    <div class="card">💼 Trabalhando</div>
+    <a href="dashboard_jogo.html"><div class="card">🔎 Desempregado</div></a>
+    <div class="card">⭐ Liderança</div>
+    <div class="card">❓ Outro</div>
+  </div>
+
+  <p class="footer">Selecione uma opção para desbloquear jogos e conteúdos referentes a cada área.</p>
+</body>
+</html>

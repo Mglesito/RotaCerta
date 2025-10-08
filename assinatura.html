@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assinatura PRO - Rota Certa</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Press Start 2P', cursive; }
+
+    body {
+      background-image: url("fundo.jpg");
+      background-color: #1a002b;
+      display:flex; justify-content:center; align-items:center;
+      min-height:100vh; padding:20px;
+    }
+
+    .container {
+      background:#2d004d;
+      border-radius:20px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.4);
+      padding:30px;
+      width:100%;
+      max-width:500px;
+      text-align:center;
+    }
+
+    .logo { width:150px; margin-bottom:20px; }
+
+    h1 {
+      font-size:1rem;
+      color:#ff4da6;
+      margin-bottom:15px;
+    }
+
+    p.description {
+      font-size:0.6rem;
+      color:#c5a3ff;
+      margin-bottom:20px;
+    }
+
+    ul.benefits {
+      text-align:left;
+      margin:15px 0;
+      padding-left:20px;
+      color:#fff;
+      font-size:0.55rem;
+      line-height:1.5;
+    }
+
+    ul.benefits li::before {
+      content: "✔ ";
+      color:#4ade80;
+    }
+
+    .price {
+      font-size:0.8rem;
+      color:#ff4da6;
+      margin:20px 0;
+    }
+
+    .btn {
+      width:100%;
+      padding:14px;
+      background:#6f42c1;
+      color:#fff;
+      border:none;
+      border-radius:14px;
+      font-size:0.9rem;
+      cursor:pointer;
+      margin-top:10px;
+      transition:0.3s;
+    }
+
+    .btn:hover { background:#d63384; }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" alt="Logo Rota Certa" class="logo">
+    <h1>Assinatura PRO</h1>
+    <p class="description">Faça a assinatura PRO e desbloqueie vários benefícios exclusivos!</p>
+
+    <ul class="benefits">
+      <li>Acesso a todos os minigames completos</li>
+      <li>Ganhos de XP dobrados</li>
+      <li>Desbloqueio de níveis secretos</li>
+      <li>Sem anúncios</li>
+      <li>Suporte prioritário</li>
+    </ul>
+
+    <div class="price">R$29,90 / mês</div>
+
+    <button class="btn" onclick="window.location.href=''">Assinar PRO</button>
+    <button class="btn" onclick="history.back()">Voltar</button>
+  </div>
+</body>
+</html>

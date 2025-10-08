@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Rota Certa</title>
+
+  <!-- Fonte pixelada (Press Start 2P) -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Reset ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Press Start 2P', cursive; /* Fonte pixelada */
+    }
+
+    body {
+      background-image: url("fundo.jpg");
+      background-color: #1a002b; /* Dark mode */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .login-container {
+      background: #2d004d; /* Fundo lilás escuro */
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      padding: 30px;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: slideFadeIn 1s ease forwards;
+    }
+
+    @keyframes slideFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo {
+      width: 200px;
+      margin-bottom: 20px;
+      animation: bounceIn 1s ease;
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      60% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    h1 {
+      font-size: 1rem; /* Fonte Press Start é naturalmente grande */
+      color: #ff4da6; /* rosa forte */
+      margin-bottom: 25px;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    label {
+      font-size: 0.6rem; /* Ajustado porque a fonte é maior */
+      color: #c5a3ff; /* lilás claro */
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #555;
+      background: #1a002b;
+      color: #fff;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    input:focus {
+      border-color: #c77dff;
+      box-shadow: 0 0 10px rgba(199,125,255,0.6);
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 8px rgba(214,51,132,0.6); }
+      to { box-shadow: 0 0 14px rgba(111,66,193,0.8); }
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      background: #6f42c1; /* lilás */
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.3s;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .btn:hover {
+      background: #d63384;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .link {
+      margin-top: 15px;
+      font-size: 0.6rem;
+      color: #ddd;
+      animation: fadeIn 2.5s ease forwards;
+    }
+
+    .link a {
+      color: #ff4da6;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .link a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Responsividade ===== */
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 0.9rem;
+      }
+
+      .btn {
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <img src="logo.png" alt="Logo Rota Certa" class="logo">
+    <h1>Entrar</h1>
+    <form action="dashboard_Pergunta.html">
+      <div class="input-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="Digite seu e-mail" required>
+      </div>
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Digite sua senha" required>
+      </div>
+      <button type="submit" class="btn">Acessar</button>
+    </form>
+    <p class="link">Não tem conta? <a href="#">Cadastre-se</a></p>
+  </div>
+</body>
+</html>

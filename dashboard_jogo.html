@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap Guiado JS</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root {
+  --lilas: #9b5de5;
+  --rosa: #60056e;
+  --cinza: #f5f5f5;
+  --branco: #ffffff;
+  --texto: #333;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Press Start 2P', cursive; }
+
+body {
+  background-image: url("fundo.jpg");
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+header {
+  background: #25053a;
+  color: var(--branco);
+  padding: 15px;
+  text-align: center;
+  font-size: 12px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+}
+
+header .top { display:flex; justify-content:space-between; align-items:center; }
+
+header .pro-btn {
+  background: var(--rosa);
+  color: var(--branco);
+  border: none;
+  padding: 5px 10px;
+  border-radius:10px;
+  font-size:10px;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  cursor:pointer;
+}
+header .pro-btn:after { content:"🔒"; }
+
+main {
+  margin-top:75px;
+  margin-bottom:70px;
+  overflow-y:auto;
+  position:relative;
+}
+
+.roadmap {
+  position:relative;
+  width:100%;
+  height:100vh;
+}
+
+/* Fases */
+.phase {
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background: var(--branco);
+  border:3px solid var(--lilas);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:16px;
+  color: var(--texto);
+  font-weight:bold;
+  position:absolute;
+  transform:translate(-50%,-50%);
+  z-index:2;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.phase:hover { transform: translate(-50%, -50%) scale(1.1); cursor:pointer; }
+
+.completed { border-color: #a90091; background: var(--rosa); color: var(--branco); }
+.unlocked { border-color: #a90091; animation:pulse 1.5s infinite; }
+.locked { opacity:0.5; border-color:#a90091; color:#aaa; }
+.locked::after { content:"🔒"; position:absolute; font-size:18px; }
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes glow {
+  0% { box-shadow:0 0 5px var(--rosa); }
+  50% { box-shadow:0 0 20px var(--rosa); }
+  100% { box-shadow:0 0 5px var(--rosa); }
+}
+
+/* Conectores */
+.connector {
+  position:absolute;
+  height:4px;
+  background: var(--rosa);
+  transform-origin: 0 50%;
+  z-index:1;
+}
+
+/* Tooltips */
+.tooltip {
+  position:absolute;
+  top:-25px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:10px;
+  color: var(--texto);
+  white-space:nowrap;
+  background: var(--branco);
+  padding:2px 5px;
+  border-radius:5px;
+  border:1px solid var(--lilas);
+  display:none;
+}
+.phase.unlocked .tooltip { display:block; }
+
+footer {
+  background: #2d0746;
+  padding:10px;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:60px;
+}
+
+footer button { background:none; border:none; cursor:pointer; width:40px; height:40px; }
+footer img { width:100%; height:auto; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="top">
+    <span>👤 Thayson</span>
+    <button class="pro-btn"><a href="assinatura.html" style="color: white; text-decoration: none;">Pro</a></button>
+  </div>
+  <div>Nível: 3 | XP: 1200 | Status: Desempregado</div>
+</header>
+
+<main>
+  <div class="roadmap" id="roadmap">
+    <!-- Fases -->
+    <a href="minigame1.html"><div class="phase completed" style="top:6%; left:50%;">1</div></a>
+    <a href="minigame2.html"><div class="phase completed" style="top:15%; left:25%;">2</div></a>
+    <a href="minigame3.html"><div class="phase unlocked" style="top:27%; left:50%;">3
+      <span class="tooltip">Clique para jogar</span>
+    </div></a>
+    <div class="phase locked" style="top:38%; left:75%;">4</div>
+    <div class="phase locked" style="top:50%; left:50%;">5</div>
+    <div class="phase locked" style="top:62%; left:25%;">6</div>
+    <div class="phase locked" style="top:73%; left:50%;">7</div>
+    <div class="phase locked" style="top:85%; left:75%;">8</div>
+    <div class="phase locked" style="top:91%; left:50%;">9</div>
+    <div class="phase locked" style="top:100%; left:50%;">10</div>
+  </div>
+</main>
+
+<footer>
+  <button><img src="Inicio.png" alt="icon1"></button>
+  <a href="conquistas.html"><button><img src="Conquistas.png" alt="icon2"></button></a>
+  <a href="saude_mental.html"><button><img src="Avatar.png" alt="icon3"></button></a>
+  <a href="index.html"><button><img src="Notificações.png" alt="icon4"></button></a>
+</footer>
+
+<script>
+function criarConectores() {
+  const roadmap = document.getElementById('roadmap');
+  const fases = roadmap.querySelectorAll('.phase');
+
+  fases.forEach((fase, i) => {
+    if(i === fases.length-1) return; // última fase não conecta
+
+    const proximo = fases[i+1];
+
+    // posições relativas ao container
+    const rect1 = fase.getBoundingClientRect();
+    const rect2 = proximo.getBoundingClientRect();
+    const roadmapRect = roadmap.getBoundingClientRect();
+
+    const x1 = rect1.left + rect1.width/2 - roadmapRect.left;
+    const y1 = rect1.top + rect1.height/2 - roadmapRect.top;
+    const x2 = rect2.left + rect2.width/2 - roadmapRect.left;
+    const y2 = rect2.top + rect2.height/2 - roadmapRect.top;
+
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const length = Math.sqrt(dx*dx + dy*dy);
+    const angle = Math.atan2(dy, dx) * 180/Math.PI;
+
+    const connector = document.createElement('div');
+    connector.className = 'connector';
+    connector.style.width = length+'px';
+    connector.style.top = y1+'px';
+    connector.style.left = x1+'px';
+    connector.style.transform = `rotate(${angle}deg)`;
+
+    roadmap.appendChild(connector);
+  });
+}
+
+// Cria conectores depois que a página e estilos carregarem
+window.addEventListener('load', criarConectores);
+
+// Recria ao redimensionar
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.connector').forEach(c => c.remove());
+  criarConectores();
+});
+</script>
+
+</body>
+</html>

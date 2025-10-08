@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrevista do Milhão</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Press Start 2P', cursive; }
+
+body {
+  background-image: url("fundo.jpg");
+  background-color: #1a002b;
+  display:flex; justify-content:center; align-items:center;
+  min-height:100vh; padding:20px;
+}
+
+.container {
+  background:#2d004d;
+  border-radius:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+  padding:20px;
+  width:100%;
+  max-width:600px;
+  text-align:center;
+}
+
+.logo { width:150px; margin-bottom:10px; }
+
+h1 { color:#ff4da6; font-size:1rem; margin-bottom:10px; }
+
+.description {
+  color:#c5a3ff;
+  font-size:0.55rem;
+  margin-bottom:10px;
+}
+
+#xpDisplay { color:#4ade80; font-size:0.6rem; margin-bottom:10px; }
+
+.question { color:#fff; font-size:0.55rem; margin:15px 0; }
+
+.options { display:flex; flex-direction:column; gap:10px; }
+
+.option-btn {
+  padding:10px;
+  border:none;
+  border-radius:12px;
+  background:#6f42c1;
+  color:#fff;
+  cursor:pointer;
+  font-size:0.5rem;
+  transition:0.3s;
+}
+
+.option-btn:hover { background:#d63384; transform:scale(1.05); }
+</style>
+</head>
+<body>
+<div class="container">
+  <img src="logo.png" alt="Logo" class="logo">
+  <h1>Entrevista do Milhão</h1>
+  <p class="description">Responda às perguntas da entrevista corretamente. Chegue a 400 XP para ser aprovado. Errar reinicia tudo!</p>
+  <div id="xpDisplay">XP: 0 / 400</div>
+  <div class="question" id="question">Carregando pergunta...</div>
+  <div class="options" id="options"></div>
+</div>
+
+<script>
+const questions = [
+  {
+    q: "Qual informação é essencial no currículo?",
+    options: ["Hobbies", "Graduação", "Série de TV favorita", "Time de futebol"],
+    answer: 1
+  },
+  {
+    q: "O que você deve evitar na entrevista?",
+    options: ["Chegar no horário", "Roupa adequada", "Mentir sobre experiência", "Cumprimentar o entrevistador"],
+    answer: 2
+  },
+  {
+    q: "Qual é uma boa prática durante a entrevista?",
+    options: ["Falar mal de empregos anteriores", "Usar gírias excessivas", "Manter contato visual", "Ficar no celular"],
+    answer: 2
+  },
+  {
+    q: "Como você deve apresentar suas habilidades?",
+    options: ["Deixar no currículo", "Falar com confiança", "Ignorar o entrevistador", "Falar baixo e sem convicção"],
+    answer: 1
+  }
+];
+
+let currentQ = 0;
+let xp = 0;
+
+const questionEl = document.getElementById('question');
+const optionsEl = document.getElementById('options');
+const xpDisplay = document.getElementById('xpDisplay');
+
+function loadQuestion(){
+  if(currentQ >= questions.length){
+    currentQ = 0;
+  }
+  const q = questions[currentQ];
+  questionEl.textContent = q.q;
+  optionsEl.innerHTML = "";
+  q.options.forEach((opt, index) => {
+    const btn = document.createElement('button');
+    btn.classList.add('option-btn');
+    btn.textContent = opt;
+    btn.addEventListener('click', () => selectOption(index));
+    optionsEl.appendChild(btn);
+  });
+}
+
+function selectOption(index){
+  const q = questions[currentQ];
+  if(index === q.answer){
+    xp += 100;
+    updateXP();
+    currentQ++;
+    loadQuestion();
+  } else {
+    // Errou: reinicia tudo
+    alert("Resposta incorreta! Comece novamente.");
+    xp = 0;
+    currentQ = 0;
+    updateXP();
+    loadQuestion();
+  }
+}
+
+function updateXP(){
+  xpDisplay.textContent = `XP: ${xp} / 400`;
+  if(xp >= 400){
+    setTimeout(()=>window.location.href='parabens.html', 500);
+  }
+}
+
+loadQuestion();
+</script>
+</body>
+</html>

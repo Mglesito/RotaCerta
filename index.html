@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bem-vindo - Rota Certa</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Press Start 2P', cursive; }
+
+body {
+  background-image: url("fundo.jpg");
+  background-color: #1a002b;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  padding:20px;
+  flex-direction:column;
+  text-align:center;
+  color:#fff;
+}
+
+.logo { width:200px; margin-bottom:20px; animation: bounce 1s ease; }
+
+@keyframes bounce {
+  0% { transform: scale(0.7); opacity:0; }
+  60% { transform: scale(1.1); opacity:1; }
+  100% { transform: scale(1); }
+}
+
+h1 {
+  font-size:1.5rem;
+  color:#ff4da6;
+  margin-bottom:15px;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+p {
+  font-size:0.8rem;
+  color:#c5a3ff;
+  margin-bottom:30px;
+  line-height:1.5;
+}
+
+.btn-start {
+  padding:15px 30px;
+  background:#6f42c1;
+  color:#fff;
+  font-size:0.9rem;
+  border:none;
+  border-radius:14px;
+  cursor:pointer;
+  transition:0.3s;
+  font-weight:bold;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.btn-start:hover {
+  background:#d63384;
+  transform:scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+</style>
+</head>
+<body>
+  <img src="logo.png" alt="Logo Rota Certa" class="logo">
+  <h1>Bem-vindo ao Rota Certa!</h1>
+  <p>Um espaço para aprender, se motivar e desenvolver suas habilidades.</p>
+  <button class="btn-start" onclick="window.location.href='login.html'">Começar</button>
+</body>
+</html>

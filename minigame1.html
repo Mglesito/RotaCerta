@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minigame Currículo - Roda a Roda</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Press Start 2P', cursive;
+    }
+
+    body {
+      background-image: url("fundo.jpg");
+      background-color: #1a002b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .game-container {
+      background: #2d004d;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      padding: 30px;
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .logo { width: 200px; margin-bottom: 20px; }
+    h1 { font-size: 1rem; color: #ff4da6; margin-bottom: 10px; }
+    p.description { font-size: 0.5rem; color: #c5a3ff; margin-bottom: 15px; }
+    #wordDisplay { font-size: 0.8rem; color: #fff; letter-spacing: 4px; margin-bottom: 15px; }
+    .letters-container { display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 15px; }
+    .letter-btn {
+      width: 30px; height: 30px; margin: 3px; background: #6f42c1;
+      color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.7rem; font-weight: bold; transition: 0.3s;
+    }
+    .letter-btn:hover { background: #d63384; }
+    .letter-btn.disabled { background: #555; cursor: default; }
+
+    .btn {
+      width: 100%; padding: 12px; background: #6f42c1;
+      color: #fff; border: none; border-radius: 14px; font-size: 0.8rem; cursor: pointer; margin-top: 10px;
+    }
+
+    .feedback { margin-top: 10px; font-size: 0.6rem; color: #ff4da6; min-height: 18px; }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <img src="logo.png" alt="Logo Rota Certa" class="logo">
+    <h1>Roda a Roda - Currículos</h1>
+    <p class="description">Escolha letras para revelar a palavra da pergunta!</p>
+
+    <div id="questionContainer">Clique em "Próxima pergunta" para começar</div>
+    <div id="wordDisplay"></div>
+
+    <div class="letters-container" id="lettersContainer"></div>
+
+    <button class="btn" id="nextBtn">Próxima pergunta</button>
+    <div class="feedback" id="feedback"></div>
+  </div>
+
+  <script>
+    const questions = [
+      {text: "1. Informação profissional que você coloca no currículo", answer: "GRADUACAO"},
+      {text: "2. Documento que comprova sua formação", answer: "DIPLOMA"},
+      {text: "3. Parte onde você fala sobre o que sabe fazer", answer: "HABILIDADES"},
+      {text: "4. Parte onde você fala onde já trabalhou", answer: "EXPERIENCIA"}
+    ];
+
+    const questionContainer = document.getElementById('questionContainer');
+    const wordDisplay = document.getElementById('wordDisplay');
+    const lettersContainer = document.getElementById('lettersContainer');
+    const feedback = document.getElementById('feedback');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let currentQuestion = -1;
+    let displayWord = [];
+
+    function generateLetterButtons() {
+      lettersContainer.innerHTML = '';
+      const ACode = 65;
+      for(let i=0;i<26;i++){
+        const btn = document.createElement('button');
+        btn.textContent = String.fromCharCode(ACode + i);
+        btn.classList.add('letter-btn');
+        btn.addEventListener('click', () => guessLetter(btn.textContent));
+        lettersContainer.appendChild(btn);
+      }
+    }
+
+    function showWord() {
+      wordDisplay.textContent = displayWord.join(' ');
+    }
+
+    function nextQuestion() {
+      feedback.textContent = '';
+      currentQuestion++;
+      if(currentQuestion >= questions.length){
+        // Todas perguntas respondidas, redireciona
+        window.location.href = "parabens.html";
+        return;
+      }
+
+      const q = questions[currentQuestion];
+      questionContainer.textContent = q.text;
+
+      displayWord = Array(q.answer.length).fill('_');
+      showWord();
+
+      Array.from(lettersContainer.children).forEach(btn => {
+        btn.classList.remove('disabled');
+        btn.disabled = false;
+      });
+    }
+
+    function guessLetter(letter) {
+      const answer = questions[currentQuestion].answer;
+      for(let i=0;i<answer.length;i++){
+        if(answer[i] === letter){
+          displayWord[i] = letter;
+        }
+      }
+      showWord();
+      // desabilitar a letra escolhida
+      const btns = Array.from(lettersContainer.children);
+      btns.forEach(btn => {
+        if(btn.textContent === letter){
+          btn.classList.add('disabled');
+          btn.disabled = true;
+        }
+      });
+    }
+
+    nextBtn.addEventListener('click', nextQuestion);
+
+    generateLetterButtons();
+  </script>
+</body>
+</html>
